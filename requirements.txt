@@ -1,0 +1,11 @@
+pandas
+numpy
+scikit-learn
+shap
+tqdm
+tldextract
+matplotlib
+ucimlrepo
+xgboost
+streamlit
+torch

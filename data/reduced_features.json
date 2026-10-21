@@ -1,0 +1,42 @@
+{
+    "total_features": 12,
+    "reduced_feature_count": 10,
+    "reduced_features": [
+        "url_length",
+        "count_hyphens",
+        "hostname_length",
+        "has_keyword",
+        "path_length",
+        "count_subdomains",
+        "count_dots",
+        "has_ip",
+        "count_slash",
+        "count_queries"
+    ],
+    "ablation_study": {
+        "k_values": [
+            2,
+            4,
+            6,
+            8,
+            10,
+            12
+        ],
+        "accuracy": [
+            0.945,
+            0.985,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+        ],
+        "f1_score": [
+            0.943,
+            0.9851,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+        ]
+    }
+}

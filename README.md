@@ -1,69 +1,122 @@
-# Phishing URL Detection: Full Research Pipeline
+# 🔐 Phishing URL Detection Model
 
-This repository implements the complete system for the paper:  
-**"Explainable and Generalizable Phishing URL Detection Using Reduced URL Features"**.
+A machine learning-based web application that detects potentially malicious phishing URLs and classifies URLs as **Phishing** or **Legitimate**.
 
----
+## 📌 Project Overview
 
-## 📁 Repository Structure
+Phishing attacks use deceptive URLs to steal sensitive information such as passwords, banking details, and personal data. This project uses machine learning and URL-based feature analysis to identify suspicious URLs and help users assess potential risks.
 
-```
+The project includes trained machine learning models, feature reduction, model evaluation, and SHAP-based explainability.
+
+## ✨ Features
+
+- 🔎 Predict whether a URL is phishing or legitimate.
+- 🤖 Use a trained machine learning model for classification.
+- 📊 Compare model performance using evaluation metrics.
+- 🧠 Analyze feature importance and explain predictions using SHAP.
+- 📉 Visualize ROC curves and feature reduction results.
+- 🌐 Provide an application interface through Streamlit, if configured in `app.py`.
+
+## 🛠️ Technologies Used
+
+- Python
+- Pandas and NumPy
+- Scikit-learn
+- SHAP
+- Streamlit
+- Matplotlib
+
+## 📁 Project Structure
+
+```text
+Research/
+├── app.py
+├── predict_url.py
+├── download_phiusiil.py
+├── extract_features.py
+├── reduce_features.py
+├── train_baseline.py
+├── train_full_models.py
+├── requirements.txt
+├── README.md
 ├── data/
-│   ├── sample_dataset.csv             # Fallback simulated dataset
-│   ├── phiusiil_dataset.csv           # Cleaned real PhiUSIIL dataset (235k rows)
-│   ├── reduced_features.json          # Selected reduced feature config
-│   └── model_benchmark_results.csv    # Final comparative benchmark table
+│   ├── model_benchmark_results.csv
+│   ├── reduced_features.json
+│   └── sample_dataset.csv
 ├── models/
-│   ├── phishing_detector.pkl          # Exported trained production model
-│   └── shap_explainer.pkl             # Exported SHAP TreeExplainer
-├── extract_features.py                # Fast lexical feature extractor (12 features)
-├── download_phiusiil.py               # Official UCI PhiUSIIL dataset loader
-├── reduce_features.py                 # Feature selection & ablation study (MI + RF)
-├── train_full_models.py               # Multi-model benchmark (RF, XGBoost, DL + SHAP)
-├── predict_url.py                     # Single URL prediction & CLI XAI report
-├── app.py                             # Interactive Streamlit Web Dashboard
-├── requirements.txt                   # Project dependencies
-└── README.md                          # Documentation
+│   ├── phishing_detector.pkl
+│   └── shap_explainer.pkl
+├── feature_importance_ranking.png
+├── feature_reduction_curve.png
+├── results_metrics_comparison.png
+├── results_roc_curves.png
+├── shap_local_explanation.png
+├── shap_summary.png
+└── shap_summary_full.png
 ```
 
----
+## ⚙️ Installation
 
-## 🚀 Step-by-Step Execution Guide
+### 1. Clone the repository
 
-### Step 1: Install Dependencies
+```bash
+git clone https://github.com/riyasachan94514/Phishing-URL-Detection.git
+cd Phishing-URL-Detection
+```
+
+### 2. Create a virtual environment
+
+Windows:
+
 ```powershell
+python -m venv venv
+venv\Scripts\activate
+```
+
+### 3. Install dependencies
+
+```bash
 pip install -r requirements.txt
 ```
 
-### Step 2: (Optional) Fetch Official UCI PhiUSIIL Dataset
-To download the official UCI benchmark (235,795 URLs):
-```powershell
-python download_phiusiil.py
-```
-*(If you skip this step, all scripts automatically fallback to the built-in sample dataset for immediate testing).*
+## ▶️ Run the Application
 
-### Step 3: Run Feature Reduction & Selection
-Calculates Mutual Information (MI) and Random Forest feature importance, performs an ablation study, and saves the top reduced features:
-```powershell
-python reduce_features.py
-```
-*Outputs: `feature_importance_ranking.png` and `feature_reduction_curve.png`.*
+If `app.py` uses Streamlit, launch it with:
 
-### Step 4: Train Comparative Models (ML vs. DL) & Compute SHAP
-Trains Random Forest, XGBoost, and Deep Neural Net (MLP), calculates accuracy, F1, and latency, and generates publication plots:
-```powershell
-python train_full_models.py
-```
-*Outputs: `results_roc_curves.png`, `results_metrics_comparison.png`, and `shap_summary_full.png`.*
-
-### Step 5: Test Any URL from the Terminal
-Test any link in milliseconds with human-readable explanations:
-```powershell
-python predict_url.py "http://paypal-security-update-verify.com/login.php"
-```
-
-### Step 6: Launch the Interactive Web Dashboard
-Run the Streamlit web dashboard in your browser:
-```powershell
+```bash
 streamlit run app.py
 ```
+
+## 🔍 Predict a URL
+
+The project includes `predict_url.py` for URL prediction. Check the script for its expected input format and run instructions before using it.
+
+## 📊 Model Evaluation
+
+The project includes visualizations for:
+
+- Model performance comparison
+- ROC curves
+- Feature importance ranking
+- Feature reduction analysis
+- SHAP explanations
+
+See the PNG files in the repository for the corresponding results.
+
+## 🧠 Explainable AI
+
+SHAP (SHapley Additive exPlanations) helps interpret model predictions by showing how input features contribute to a prediction. This project includes SHAP summary and local explanation visualizations.
+
+## ⚠️ Disclaimer
+
+This project is intended for educational and research purposes. Predictions are not a guarantee that a URL is safe or malicious. Always use caution when opening unknown links.
+
+## 👩‍💻 Author
+
+**Riya Sachan**
+
+GitHub: [@riyasachan94514](https://github.com/riyasachan94514)
+
+---
+
+⭐ If you find this project useful, consider giving the repository a star.
